@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lampu Kelistrikan Mobil | Amen Project</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section id="main">
+      <div id="title">
+        <h1 id="title">Lampu Kelistrikan Mobil</h1>
+      </div>
+      <div id="unit">
+        <table id="display">
+          <tr id="title">
+            <td><div id="title-kiri">Lampu Kiri</div></td>
+            <td><div id="title-rem">Lampu Rem</div></td>
+            <td><div id="title-kanan">Lampu Kanan</div></td>
+          </tr>
+          <tr id="lampu">
+            <td id="lampu-kiri"><div id="lampu"></div></td>
+            <td id="lampu-rem"><div id="lampu"></div></td>
+            <td id="lampu-kanan"><div id="lampu"></div></td>
+          </tr>
+        </table>
+        <div id="space"></div>
+        <div id="function-section">
+          <div id="function">
+            <div id="function-title">
+              <p><u>Tombol Aksi</u></p>
+            </div>
+            <table id="function">
+              <tr id="function">
+                <td id="f-kiri"><button type="button" name="kiri" class="button" id="sein-kiri" onclick="seinKiri()">Sein Kiri</button></td>
+                <td id="space"><div></div></td>
+                <td id="f-kanan"><button type="button" name="hazard" class="button" id="hazard" onclick="hazard()">Lampu Hazard</button></td>
+              </tr>
+              <tr>
+                <td id="f-kiri"><button type="button" name="stop" class="button" id="reset" onclick="resetLampu()">Stop / Reset</button></td>
+                <td id="space"><div></div></td>
+                <td id="f-kanan"><button type="button" name="rem" class="button" id="rem" onmousedown="rem('on')" onmouseup="rem('off')">Lampu Rem</button></td>
+              </tr>
+              <tr>
+                <td id="f-kiri"><button type="button" name="kanan" class="button" id="sein-kanan" onclick="seinKanan()">Sein Kanan</button></td>
+                <td id="space"><div></div></td>
+                <td id="f-kiri">
+                  <button type="button" name="kanan" class="button" id="magic"><a href="magic/">Magic Button</a></button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      const lampuKiri = document.getElementById("lampu-kiri");
+      const lampuKanan = document.getElementById("lampu-kanan");
+      const lampuRem = document.getElementById("lampu-rem");
+      function seinKiri() {
+        if (!lampuKiri.attributes[0].value.includes("on")) {
+          lampuKiri.setAttribute("id", "lampu-kiri on");
+        } else if (lampuKiri.attributes[0].value.includes("on")) {
+          lampuKiri.setAttribute("id", "lampu-kiri");
+        }
+        if (lampuKanan.attributes[0].value.includes("on")) {
+          lampuKanan.setAttribute("id", "lampu-kanan");
+        }
+      }
+
+      function seinKanan() {
+        if (!lampuKanan.attributes[0].value.includes("on")) {
+          lampuKanan.setAttribute("id", "lampu-kanan on");
+        } else if (lampuKanan.attributes[0].value.includes("on")) {
+          lampuKanan.setAttribute("id", "lampu-kanan");
+        }
+        if (lampuKiri.attributes[0].value.includes("on")) {
+          lampuKiri.setAttribute("id", "lampu-kiri");
+        }
+      }
+
+      function resetLampu() {
+        if (lampuKanan.attributes[0].value.includes("on") && lampuKiri.attributes[0].value.includes("on")) {
+          lampuKanan.setAttribute("id", "lampu-kanan");
+          lampuKiri.setAttribute("id", "lampu-kiri");
+        } else if (lampuKanan.attributes[0].value.includes("on")) {
+          lampuKanan.setAttribute("id", "lampu-kanan");
+        } else if (lampuKiri.attributes[0].value.includes("on")) {
+          lampuKiri.setAttribute("id", "lampu-kiri");
+        }
+      }
+
+      function hazard() {
+        if (lampuKanan.attributes[0].value.includes("on") && lampuKiri.attributes[0].value.includes("on")) {
+          lampuKanan.setAttribute("id", "lampu-kanan");
+          lampuKiri.setAttribute("id", "lampu-kiri");
+        } else {
+          lampuKanan.setAttribute("id", "lampu-kanan on");
+          lampuKiri.setAttribute("id", "lampu-kiri on");
+        }
+      }
+
+      function rem(condition) {
+        if (condition == "on") {
+          lampuRem.setAttribute("id", "lampu-rem on");
+        } else if (condition == "off") {
+          lampuRem.setAttribute("id", "lampu-rem");
+        }
+      }
+    </script>
+  </body>
+</html>
