@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lampu Kelistrikan Mobil | Amen Project</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="mobile-device.js"></script>
   </head>
   <body>
     <section id="main">
@@ -34,17 +33,17 @@
             </div>
             <table id="function">
               <tr id="function">
-                <td id="f-kiri sein-kiri"><button type="button" name="kiri" class="button" id="sein-kiri" onclick="seinKiri()">Sein Kiri</button></td>
+                <td id="f-kiri sein-kiri"><button type="button" name="kiri" class="button" id="btn-sein-kiri" onclick="seinKiri()">Sein Kiri</button></td>
                 <td id="space"><div></div></td>
-                <td id="f-kanan hazard"><button type="button" name="hazard" class="button" id="hazard" onclick="hazard()">Lampu Hazard</button></td>
+                <td id="f-kanan hazard"><button type="button" name="hazard" class="button" id="btn-hazard" onclick="hazard()">Lampu Hazard</button></td>
               </tr>
               <tr>
-                <td id="f-kiri reset"><button type="button" name="stop" class="button" id="reset" onclick="resetLampu()">Stop / Reset</button></td>
+                <td id="f-kiri reset"><button type="button" name="stop" class="button" id="btn-reset" onclick="resetLampu()">Stop / Reset</button></td>
                 <td id="space"><div></div></td>
-                <td id="f-kanan rem"><button type="button" name="rem" class="button" id="rem" onmousedown="rem('on')" onmouseup="rem('off')">Lampu Rem</button></td>
+                <td id="f-kanan rem"><button type="button" name="rem" class="button" id="btn-rem" onclick="rem()">Lampu Rem</button></td>
               </tr>
               <tr>
-                <td id="f-kiri sein-kanan"><button type="button" name="kanan" class="button" id="sein-kanan" onclick="seinKanan()">Sein Kanan</button></td>
+                <td id="f-kiri sein-kanan"><button type="button" name="kanan" class="button" id="btn-sein-kanan" onclick="seinKanan()">Sein Kanan</button></td>
                 <td id="space"><div></div></td>
                 <td id="f-kiri">
                   <button type="button" name="kanan" class="button" id="magic"><a href="magic/">Magic Button</a></button>
@@ -125,11 +124,11 @@
         }
       }
 
-      function rem(condition) {
-        if (condition == "on") {
+      function rem() {
+        if(!lampuRem.attributes[0].value.includes("on")){
           lampuRem.setAttribute("id", "lampu-rem on");
           btn_rem.setAttribute("id", "f-kanan rem on")
-        } else if (condition == "off") {
+        } else {
           lampuRem.setAttribute("id", "lampu-rem");
           btn_rem.setAttribute("id", "f-kanan rem")
         }
